@@ -1,22 +1,36 @@
-import jwt from "jsonwebtoken";
-import { UnauthenticatedError } from "../errors/index.js";
+import jwt from 'jsonwebtoken';
+import { UnAuthenticatedError } from '../errors/index.js'
 
 const auth = async (req, res, next) => {
-  // console.log(req.cookies);
-  const token = req.cookies.token;
-  if (!token) {
-    throw new UnauthenticatedError("Authentication Invalid");
-  }
-  try {
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('authenticate user via cookieParser package making req.cookies allows cookie to be accessed in req')
+    const token = req.cookies.token
+    if (!token) {
+        throw new UnAuthenticatedError('Authentication Invalid')
+    }
 
-    // console.log(payload);
-    const testUser = payload.userId === "642f06ae24978e9d699311bb";
-    req.user = { userId: payload.userId, testUser };
-    next();
-  } catch (error) {
-    throw new UnauthenticatedError("Authentication Invalid");
-  }
-};
+    // old way token in storage
+    // const authHeader = req.headers.authorization
+    // if (!authHeader || !authHeader.startsWith('Bearer')) {
+    // 401 error
+    // return res.status(401).json({ message: 'Invalid Credentials' })
+    // use error object
+    // throw new UnAuthenticatedError('Authentication Invalid')
+    // }
+    // const token = authHeader?.split(' ')[1]
 
-export default auth;
+    try {
+        const payload = jwt.verify(token, process.env.JWT_SECRET)
+        const testUser = payload.userId === '64933ee97a7a127f2a81948e'
+        req.user = { userId: payload.userId, testUser }
+
+        // next() means you are passed to the next middleware
+        next()
+    } catch (error) {
+        console.log(23, error)
+        throw new UnAuthenticatedError('Authentication Invalid')
+    }
+
+
+}
+
+export default auth

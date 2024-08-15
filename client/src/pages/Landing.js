@@ -1,39 +1,30 @@
-import React from "react";
-import main from "../assets/images/main.svg";
-import Wrapper from "../assets/wrappers/LandingPage";
-import { Logo } from "../components";
-import { Link, Navigate } from "react-router-dom";
-import { useAppContext } from "../context/appContext";
+import React from 'react'
+import main from '../assets/images/main.svg'
+import Wrapper from '../assets/wrappers/LandingPage'
+import { Logo } from '../components/index'
+import { Link, Navigate } from "react-router-dom"
+import { useAppContext } from '../context/appContext'
 
 const Landing = () => {
-  const { user } = useAppContext();
-  return (
-    <React.Fragment>
-      {user && <Navigate to="/" />}
-      <Wrapper>
-        <nav>
-          <Logo />
-        </nav>
-        <div className="container page">
-          <div className="info">
-            <h1>
-              Job<span> Tracking </span>App
-            </h1>
-            <p>
-              I'm baby viral enamel pin chartreuse cliche retro at selfies
-              kinfolk photo booth plaid jianbing actually squid 3 wolf moon
-              lumbersexual. Hell of humblebrag gluten-free lo-fi man braid
-              leggings.
-            </p>
-            <Link to="/register" className="btn btn-hero">
-              Login/Register
-            </Link>
-          </div>
-          <img src={main} alt="job hunt" className="img main-img" />
-        </div>
-      </Wrapper>
-    </React.Fragment>
-  );
-};
+    const { user } = useAppContext();
+    return (
+        <>
+            {user && <Navigate to="/" />}
+            <Wrapper>
+                <nav>
+                    <Logo />
+                </nav>
+                <div className="container page">
+                    <h1>job<span>tracking</span></h1>
+                    <p>
+                        I'm baby sartorial Brooklyn vinyl, selfies blue bottle swag authentic pickled hell of. Echo park cupping humblebrag, butcher fashion axe umami squid hot chicken authentic af gorpcore. Banh mi chia thundercats marxism polaroid humblebrag organic lyft tote bag cronut microdosing listicle. Four loko venmo VHS chambray iceland meggings neutra DSA cold-pressed green juice.
+                    </p>
+                    <Link to="/register" className="btn btn-hero">Login/Register</Link>
+                    <img src={main} className="img main-img" />
+                </div>
+            </Wrapper>
+        </>
+    )
+}
 
-export default Landing;
+export default Landing

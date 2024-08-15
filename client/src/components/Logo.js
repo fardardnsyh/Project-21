@@ -1,8 +1,8 @@
-import React from "react";
-import logo from "../assets/images/logo.svg";
+import React from 'react'
+import logo from '../assets/images/jobsterLogo.svg'
 
-const Logo = () => {
-  return <img src={logo} alt="jobify" className="logo" />;
-};
-
-export default Logo;
+export default function Logo() {
+    return (
+        <img src={logo} className="logo" alt="jobster-logo" />
+    )
+}

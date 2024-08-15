@@ -1,27 +1,24 @@
-import express from "express";
-const router = express.Router();
+import express from "express"
+import { register, login, updateUser, getCurrentUser, logout } from "../controllers/authController.js";
+//auth
+import authenticateUser from '../middleware/auth.js'
+import testUser from '../middleware/testUser.js'
 
-import rateLimiter from "express-rate-limit";
+export const authRouter = express.Router();
+
+import rateLimiter from 'express-rate-limit'
+
 const apiLimiter = rateLimiter({
-  windowMs: 15 * 60 * 100, // 15min
-  max: 10,
-  message: "Too many request from this IP address, please try after 15 minutes",
-});
+    windowMs: 15 * 60,
+    max: 10,
+    message: 'Too many requests from this IP, please try again in 15 minutes'
+})
 
-import {
-  register,
-  login,
-  updateUser,
-  getCurrentUser,
-  logout,
-} from "../controllers/authController.js";
-import authenticateUser from "../middleware/auth.js";
-import testUser from "../middleware/testUser.js";
+authRouter.route('/register').post(apiLimiter, register)
+authRouter.route('/login').post(apiLimiter, login)
+// the user is authenticated before being updated
+authRouter.route('/updateUser').patch(authenticateUser, testUser, updateUser)
+authRouter.route('/getCurrentUser').get(authenticateUser, getCurrentUser)
+authRouter.route('/logout').get(logout)
 
-router.route("/register").post(apiLimiter, register);
-router.route("/login").post(apiLimiter, login);
-router.route("/updateUser").patch(authenticateUser, testUser, updateUser);
-router.route("/getCurrentUser").get(authenticateUser, getCurrentUser);
-router.route("/logout").get(logout);
-
-export default router;
+export default authRouter

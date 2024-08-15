@@ -1,11 +1,9 @@
-import React, { useState, useRef, useMemo } from "react";
-import { FormRow, FormRowSelect } from ".";
-import { useAppContext } from "../context/appContext";
-import Wrapper from "../assets/wrappers/SearchContainer";
+import React from 'react'
+import { FormRow, FormRowSelect } from './index.js'
+import { useAppContext } from '../context/appContext'
+import Wrapper from '../assets/wrappers/SearchContainer'
 
 const SearchContainer = () => {
-  const [localSearch, setLocalSearch] = useState("");
-  let timeoutId = useRef();
   const {
     isLoading,
     search,
@@ -16,68 +14,61 @@ const SearchContainer = () => {
     statusOptions,
     jobTypeOptions,
     handleChange,
-    clearFilters,
-  } = useAppContext();
+    clearFilters
+  } = useAppContext()
+
   const handleSearch = (e) => {
-    handleChange({ name: e.target.name, value: e.target.value });
-  };
+    if (isLoading) return
+    handleChange({ name: e.target.name, value: e.target.value })
+  }
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setLocalSearch("");
-    clearFilters();
-  };
-  const debounce = () => {
-    return (e) => {
-      setLocalSearch(e.target.value);
-      clearTimeout(timeoutId.current);
-      timeoutId.current = setTimeout(() => {
-        handleChange({ name: e.target.name, value: e.target.value });
-      }, 1000);
-    };
-  };
-  const optimizedDebounce = useMemo(() => debounce(), []);
+    e.preventDefault()
+    clearFilters()
+  }
+
   return (
     <Wrapper>
-      <form className="form">
+      <form className='form'>
         <h4>search form</h4>
-        <div className="form-center">
+        {/* search position */}
+        <div className='form-center'>
           <FormRow
             type="text"
             name="search"
-            value={localSearch}
-            handleChange={optimizedDebounce}
+            value={search}
+            handleChange={handleSearch}
           />
+          {/* search status  */}
           <FormRowSelect
-            labelText="job status"
+            labelText="status"
             name="searchStatus"
             value={searchStatus}
             handleChange={handleSearch}
-            list={["all", ...statusOptions]}
+            list={['all', ...statusOptions]}
           />
+          {/* search by type  */}
           <FormRowSelect
-            labelText="job type"
+            labelText="type"
             name="searchType"
             value={searchType}
             handleChange={handleSearch}
-            list={["all", ...jobTypeOptions]}
+            list={['all', ...jobTypeOptions]}
           />
+          {/* sort  */}
           <FormRowSelect
             name="sort"
             value={sort}
             handleChange={handleSearch}
             list={sortOptions}
           />
-          <button
-            className="btn btn-block btn-danger"
-            disabled={isLoading}
-            onClick={handleSubmit}
-          >
+          <button className="btn btn-block btn-danger" disabled={isLoading} onClick={handleSubmit}>
             clear filters
           </button>
         </div>
       </form>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default SearchContainer;
+export default SearchContainer

@@ -1,8 +1,10 @@
-import { UnauthenticatedError } from "../errors/index.js";
+import { UnAuthenticatedError } from '../errors/index.js'
 
-const checkPermissions = (requestUser, resourceUserId) => {
-  //   if (requestUser.role === "admin") return;
-  if (requestUser.userId === resourceUserId.toString()) return;
-  throw new UnauthenticatedError("Not authorized to access this route");
-};
-export default checkPermissions;
+const checkPermissions = (requestUser, resouceUserId) => {
+    // don't have to call next as we throw error express setup handles
+    //if (requestUser.role === 'admin') return
+    // if (requestUser.userId === resouceUserId.toString()) return
+    // throw new UnAuthenticatedError('Authentication invalid, no permission')
+}
+
+export default checkPermissions
