@@ -1,0 +1,135 @@
+@import "@/styles/colors", "@/styles/mixins";
+
+.signInCard {
+  padding: 1em 2em 2em;
+  border-radius: 2em;
+  width: 28em;
+  max-height: 45em;
+  background-color: $clr-white;
+  box-shadow: 0 0 1.75em 0.25em rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+
+  .title {
+    font-size: 2em;
+    font-weight: 600;
+  }
+
+  .instructions {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: rgba($clr-text, 0.5);
+  }
+
+  .divider {
+    width: 100%;
+    position: relative;
+    margin-block: 1.5em;
+
+    hr {
+      border: 1px solid rgba($clr-text, 0.2);
+    }
+
+    span {
+      position: absolute;
+      top: -0.8em;
+      left: 50%;
+      transform: translateX(-50%);
+      padding-inline: 0.5em;
+      font-size: 1.2em;
+      color: rgba($clr-text, 0.5);
+      background-color: $clr-white;
+    }
+  }
+
+  .error {
+    color: red;
+    margin-left: 0.5em;
+  }
+
+  .success {
+    color: green;
+    margin-left: 0.5em;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+
+    .inputDiv {
+      width: 100%;
+
+      input {
+        width: 100%;
+        padding: 0.5em;
+        border: 1px solid $clr-text;
+        border-radius: 1em;
+        font-size: 1.2em;
+        color: $clr-text;
+      }
+    }
+
+    .link {
+      color: $clr-text;
+      font-weight: 600;
+      text-decoration: underline;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .forgotPassword {
+      margin-left: auto;
+    }
+
+    .submitBtn {
+      background-color: $clr-bg-100;
+      border: none;
+    }
+
+    .secondPassword {
+      margin-bottom: 2em;
+    }
+  }
+
+  .btn {
+    font-size: 1.2em;
+    padding: 0.6em 1em;
+    max-width: 20em;
+    width: 100%;
+    border: 1px solid $clr-text;
+    border-radius: 1em;
+    font-weight: 600;
+    color: $clr-text;
+    display: flex;
+
+    .btnText {
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    @include btn-hover {
+      box-shadow: inset 21em 0 0 0 $clr-bg-200;
+      scale: 1.1;
+    }
+  }
+
+  .demoBtn {
+    margin-top: 3em;
+    border: 2px solid $clr-demo-btn;
+    padding-block: 0.7em;
+
+    .btnText {
+      font-size: 1.1em;
+      color: $clr-demo-btn;
+    }
+  }
+}
