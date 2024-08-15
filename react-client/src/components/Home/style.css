@@ -1,0 +1,109 @@
+.Home {
+  text-align: left;
+  font-family: "Baloo Bhaina 2";
+  background-color: #f6ffff;
+}
+
+.h1 {
+  color: #2abebe;
+  font-size: 45px;
+  font-family: "Baloo Bhaina 2";
+  flex-grow: 1;
+  line-height: 1;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.call-to-action {
+  color: #342ea1;
+  font-size: 38px;
+  font-family: "Baloo Bhaina 2";
+  font-weight: bolder;
+}
+
+.main-text {
+  color: #342ea1;
+  font-size: 38px;
+  font-family: "Baloo Bhaina 2";
+  font-weight: bolder;
+  margin-bottom: 16px;
+}
+
+.short-description {
+  color: #433694;
+  font-size: 20px;
+  font-family: "Baloo Bhaina 2";
+  margin-bottom: 60px;
+}
+
+.image {
+  margin-bottom: 60px;
+}
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem 4rem;
+  max-width: 120rem;
+  margin: auto;
+}
+
+.content {
+  text-align: center;
+}
+
+.signup-button.signup-button {
+  color: white;
+  width: 200px;
+  background-color: #2abebe;
+  border: white;
+  margin-bottom: 55px;
+}
+
+.signup-button.signup-button:hover {
+  background-color: #228a8a;
+}
+
+.signup-button.info {
+  color: #fff;
+  background-color: #2abebe;
+  border-color: #fff;
+}
+
+.job-search {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 45px;
+}
+
+.description {
+  background-color: #dffafa;
+}
+
+.login-button.login-button {
+  background-color: #2abebe;
+  border: white;
+}
+
+.login-button.login-button:hover {
+  background-color: #228a8a;
+}
+
+.new-column {
+  margin-bottom: 70px;
+}
+
+.new-card {
+  margin-bottom: 70px;
+}
+
+.app-explanation {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  color: #433e9e;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
